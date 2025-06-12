@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get "tickets/index"
   get "home/index"
-   root "tickets#index"
+ 
   # Train booking
   get 'trains/ticketdetails', to: 'trains#ticketdetails', as: 'ticketdetails'
   get 'trains/payment', to: 'trains#payment', as: 'payment'
@@ -23,5 +23,9 @@ Rails.application.routes.draw do
   get  'users/userbooking', to: 'users#userbooking', as: 'userbooking'
 
   root "home#index"
+
+  root "tickets#index"   
+  
+  resources :tickets
 
 end
