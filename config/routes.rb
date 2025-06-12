@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "tickets/index"
+  get "home/index"
+   root "tickets#index"
   # Train booking
   get 'trains/ticketdetails', to: 'trains#ticketdetails', as: 'ticketdetails'
   get 'trains/payment', to: 'trains#payment', as: 'payment'
@@ -18,4 +21,7 @@ Rails.application.routes.draw do
   post '/users/login',  to: 'users#login',      as: 'login_user'
   get  'users/home',    to: 'users#home',       as: 'home'
   get  'users/userbooking', to: 'users#userbooking', as: 'userbooking'
+
+  root "home#index"
+
 end
