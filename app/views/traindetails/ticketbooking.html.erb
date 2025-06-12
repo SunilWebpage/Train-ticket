@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Train Booking</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url('https://t3.ftcdn.net/jpg/15/19/32/20/360_F_1519322010_WoI4gGz07GtrbUv19KNzR1Bi1mABmwZW.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container-fluid{
+      height: 100vh;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+
+     
+      
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(10px);
+      margin-top: 70px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    th {
+      background-color: #3498db;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #eee;
+      text-align: center;
+    }
+
+    tr:hover {
+      background-color: #f8f9fa;
+    }
+
+    .edit-link {
+      color: #3498db;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 4px;
+      background-color: #e3f2fd;
+      transition: all 0.3s ease;
+    }
+
+    .edit-link:hover {
+      background-color: #3498db;
+      color: white;
+    }
+
+    .delete-btn {
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .delete-btn:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>Train Name</th>
+          <th>Train Number</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Departure</th>
+          <th>Arrival</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @train_details.each do |train| %>
+          <tr>
+            <td><%= train.train_name %></td>
+            <td><%= train.train_number %></td>
+            <td><%= train.From %></td>
+            <td><%= train.To %></td>
+            <td><%= train.departure_time.strftime("%Y-%m-%d %H:%M") %></td>
+            <td><%= train.arrival_time.strftime("%Y-%m-%d %H:%M") %></td>
+            <td><%= link_to 'Edit', edit_traindetail_path(train), class: "edit-link" %></td>
+            <td>
+              <%= button_to "Delete", traindetail_path(train), method: :delete, 
+                  data: { turbo_confirm: "Are you sure?" }, class: "delete-btn" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

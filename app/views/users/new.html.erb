@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register</title>
+</head>
+<body>
+  <div>
+    <%= form_with model: @user, local: true do |f| %>
+      <div>
+        <%= f.label :name, "Username" %>
+        <%= f.text_field :name %>
+      </div>
+
+      <div>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
+
+      <div>
+        <%= f.submit "Register" %>
+      </div>
+
+      
+    <% end %>
+  </div>
+</body>
+
+</html>

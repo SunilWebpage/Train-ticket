@@ -1,0 +1,2 @@
+module TraindetailsHelper
+end

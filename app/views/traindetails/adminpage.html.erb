@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Admin Dashboard</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-image: url('https://t3.ftcdn.net/jpg/10/72/70/68/360_F_1072706852_nPT8lC6tPqgYjEPu2EpDgcKmhflIpglw.jpg');
+			background-size: cover;
+			background-position: center;
+			height: 100vh;
+			
+		}
+		.container-fluid{
+			height: 99vh;
+			background-color: transparent;
+			backdrop-filter: blur(10px);
+			box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+			padding: 40px;
+			border-radius: 15px;
+			text-align: center;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		h1 {
+			color: #2c3e50;
+			margin-bottom: 30px;
+			font-size: 2.5em;
+			font-weight: 600;
+		}
+
+		.button-container {
+			display: flex;
+			gap: 20px;
+		transition: all 0.3s ease;
+		justify-content: center;
+		}
+
+		.button {
+			padding: 12px 24px;
+			border-radius: 6px;
+			text-decoration: none;
+			font-weight: 500;
+			transition: all 0.3s ease;
+			color: white;
+		}
+
+		.add-button {
+			background-color: #2ecc71;
+		}
+
+		.view-button {
+			background-color: #3498db;
+		}
+
+		.button:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		}
+
+		.add-button:hover {
+			background-color: #27ae60;
+		}
+
+		.view-button:hover {
+			background-color: #2980b9;
+		}
+	</style>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="container">
+		<h1>Hii Buddy Add More Trains For Users</h1>
+		<div class="button-container">
+			<%= link_to "Add Trains", new_traindetail_path, class: "button add-button" %>
+			<%= link_to "View Trains", ticketbooking_path, class: "button view-button" %>
+		</div>
+	</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

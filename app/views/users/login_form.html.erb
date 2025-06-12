@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                  url('https://plus.unsplash.com/premium_photo-1661937674312-89f00c7e44e7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW5kaWFuJTIwcmFpbHdheXxlbnwwfHwwfHx8MA%3D%3D');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1rem;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      border-color: #4CAF50;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    input[type="submit"] {
+      background: #4CAF50;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+
+    input[type="submit"]:hover {
+      background: #45a049;
+    }
+
+    .flash-message {
+      margin: 1rem 0;
+      padding: 0.8rem;
+      border-radius: 5px;
+    }
+
+    .flash-notice {
+      background: rgba(76, 175, 80, 0.2);
+      color: #4CAF50;
+    }
+
+    .flash-alert {
+      background: rgba(244, 67, 54, 0.2);
+      color: #f44336;
+    }
+
+    .register-link {
+      margin-top: 1.5rem;
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 5px;
+      transition: background 0.2s;
+    }
+
+    .register-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Login</h1>
+
+    <%= form_with url: login_user_path, method: :post, local: true do %>
+      <div class="form-group">
+        <%= label_tag :name, "Username" %>
+        <%= text_field_tag :name, nil, placeholder: "Enter your username" %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :password, "Password" %>
+        <%= password_field_tag :password, nil, placeholder: "Enter your password" %>
+      </div>
+
+      <div class="form-group">
+        <%= submit_tag "Login" %>
+      </div>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <div class="flash-message flash-notice">
+        <%= flash[:notice] %>
+      </div>
+    <% elsif flash[:alert] %>
+      <div class="flash-message flash-alert">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+    <%= link_to "Don't have an account? Register here", new_user_path, class: "register-link" %>
+  </div>
+</body>
+</html>
